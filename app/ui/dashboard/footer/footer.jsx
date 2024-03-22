@@ -4,7 +4,7 @@ const Footer = () => {
     return(
         <div className={styles.container}>
             <div className={styles.logo}>Lama Dev</div>
-            <div className={styles.text}> All right reserved.</div>
+            <div className={styles.text}>© All rights reserved.</div>
         </div>
     )
 }
