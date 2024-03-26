@@ -21,7 +21,6 @@ const Pagination = ({count}) => {
         type === "prev" ? params.set("page", parseInt(page) - 1) : params.set("page", parseInt(page) + 1)
         replace(`${pathname}?${params}`)
     }
-
     return(
         <div className={styles.container}>
             <button className={styles.button} disabled={!hasPrev} onClick={()=>handleChangePage("prev")}>Preview</button>
@@ -30,4 +29,4 @@ const Pagination = ({count}) => {
     )
 }
 
-export default Pagination
+export default Pagination
