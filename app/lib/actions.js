@@ -1,10 +1,11 @@
 "use server"
 
-import { connectToDB } from "./utils";
-import { Product, User } from "./models";
 import { revalidatePath } from "next/cache";
+import { Product, User } from "./models";
+import { connectToDB } from "./utils";
 import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
+import { signIn } from "../auth";
 
 export const addUser = async (formData)=>{
     const {username, email, password, phone, address, isAdmin, isActive} =  Object.fromEntries(formData);
@@ -33,21 +34,60 @@ export const addUser = async (formData)=>{
     redirect("/dashboard/users")
 }
 
+export const updateUser = async (formData)=>{
+    const {id, username, email, password, phone, address, isAdmin, isActive} =  Object.fromEntries(formData);
+
+    try{
+        connectToDB();
+
+        const updateFields = {
+            username, email, password, phone, address, isAdmin, isActive
+        }
+
+        Object.keys(updateFields).forEach(key=>(updateFields[key]==="" || undefined) && delete updateFields[key])
+
+        await User.findByIdAndUpdate(id,updateFields )
+
+    }catch(err){
+        console.log(err);
+    }
+
+    revalidatePath("/dashboard/users")
+    redirect("/dashboard/users")
+}
+
+
 export const addProduct = async (formData)=>{
     const {title, desc, price, stock, color, size} =  Object.fromEntries(formData);
 
     try{
         connectToDB();
-
         const newProduct = new Product({
-            title, 
-            desc, 
-            price, 
-            stock, 
-            color, 
-            size
+            title, desc, price, stock, color, size
         });
         await newProduct.save()
+    }catch(err){
+        console.log(err);
+    }
+
+    revalidatePath("/dashboard/products")
+    redirect("/dashboard/products")
+}
+
+export const updateProduct = async (formData)=>{
+    const {  title, desc, price, stock, color, size} =  Object.fromEntries(formData);
+
+    try{
+        connectToDB();
+
+        const updateFields = {
+            title, desc, price, stock, color, size
+        }
+
+        Object.keys(updateFields).forEach(key=>(updateFields[key]==="" || undefined) && delete updateFields[key])
+
+        await Product.findByIdAndUpdate(id,updateFields )
+
     }catch(err){
         console.log(err);
     }
@@ -85,3 +125,16 @@ export const deleteProduct = async (formData)=>{
 
     revalidatePath("/dashboard/products")
 }
+
+export const authenticate = async (prevState, formData) => {
+    const { username, password } = Object.fromEntries(formData);
+
+    try {
+        await signIn("credentials", { username, password });
+    } catch (err) {
+        if (err.message.includes("CredentialsSignin")){
+            return "Wrong Credentials";
+        }
+            throw err;
+    }
+};

@@ -4,7 +4,7 @@ import Link from "next/link"
 import styles from '@/app/ui/dashboard/products/products.module.css'
 import Pagination from "@/app/ui/dashboard/pagination/pagination"
 import { fetchProducts } from "@/app/lib/data"
-import { deleteProduct } from "@/app/lib/action"
+import { deleteProduct } from "@/app/lib/actions"
 
 const ProductsPage =  async({searchParams}) => {
     const q = searchParams?.q || "";
