@@ -73,6 +73,48 @@ const productSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+const accountSchema = new mongoose.Schema(
+  {
+    username: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    nama_toko: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    db_name: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    created_by: {
+      type: String,
+    },
+    updated_by: {
+      type: String,
+    },
+    created_at: {
+      type: Date,  
+    },
+    updated_at: {
+      type: Date, 
+    },
+    deleted_at: {
+      type: Date, 
+    },
+    img: {
+      type: String,
+    },
+  },
+  { timestamps: true }
+);
+
+
+
 export const User = mongoose.models.User || mongoose.model("User", userSchema);
-export const Product =
-  mongoose.models.Product || mongoose.model("Product", productSchema);
+export const Product = mongoose.models.Product || mongoose.model("Product", productSchema);
+export const Account = mongoose.models.Account || mongoose.model("Account", accountSchema);
+

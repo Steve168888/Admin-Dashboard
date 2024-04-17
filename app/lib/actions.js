@@ -1,7 +1,7 @@
 "use server"
 
 import { revalidatePath } from "next/cache";
-import { Product, User } from "./models";
+import { Product, User, Account } from "./models";
 import { connectToDB } from "./utils";
 import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
@@ -101,9 +101,7 @@ export const deleteUser = async (formData)=>{
 
     try{
         connectToDB();
-
-
-        await Product.findByIdAndDelete(id)
+        await User.findByIdAndDelete(id)
     }catch(err){
         console.log(err);
     }
@@ -116,9 +114,20 @@ export const deleteProduct = async (formData)=>{
 
     try{
         connectToDB();
-
-
         await Product.findByIdAndDelete(id)
+    }catch(err){
+        console.log(err);
+    }
+
+    revalidatePath("/dashboard/products")
+}
+
+export const deleteAccount = async (formData)=>{
+    const {id} =  Object.fromEntries(formData);
+
+    try{
+        connectToDB();
+        await Account.findByIdAndDelete(id)
     }catch(err){
         console.log(err);
     }

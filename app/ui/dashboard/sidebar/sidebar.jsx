@@ -25,6 +25,11 @@ const menuItems = [
         icon: <MdDashboard />,
       },
       {
+        title: "Account",
+        path: "/dashboard/accounts",
+        icon: <MdSupervisedUserCircle />,
+      },
+      {
         title: "Users",
         path: "/dashboard/users",
         icon: <MdSupervisedUserCircle />,
