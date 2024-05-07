@@ -30,6 +30,7 @@ const AccountsPage =  async({searchParams}) => {
             <tbody>
             {accounts.map(account=>(
                 <tr key={account.id}>
+                    
                     <td>
                         <div className={styles.account}>
                         <Image src={account.img || "/noproduct.jpg"} alt="" width={40} height={40} className={styles.accountImage}/>

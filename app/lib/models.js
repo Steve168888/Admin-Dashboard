@@ -108,6 +108,9 @@ const accountSchema = new mongoose.Schema(
     img: {
       type: String,
     },
+    account_type: {
+      type: String,
+    }
   },
   { timestamps: true }
 );

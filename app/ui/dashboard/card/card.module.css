@@ -5,7 +5,7 @@
     display: flex;
     gap: 20px;
     cursor: pointer;
-    width: 100%;
+    width: 300%;
 }
 
 .container:hover{
