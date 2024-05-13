@@ -122,8 +122,9 @@ export const getAccountsThisWeek = async () => {
 };
 
 
-export const getAccountsLastWeek= async () => {
+export const getAccountsLastWeek = async () => {
     try {
+        // Menghubungkan ke database
         connectToDB();
 
         // Mendapatkan hari ini
@@ -146,10 +147,13 @@ export const getAccountsLastWeek= async () => {
             account_type: 'traffic',
             created_at: {
                 $gte: lastWeekMonday,
-                $lt: lastWeekSunday
+                $lte: lastWeekSunday
             }
         });
 
+        // Menampilkan tanggal yang dihitung
+
+        // Mengembalikan jumlah akun
         return accountCount;
     } catch (err) {
         console.log('Error:', err);
@@ -160,4 +164,3 @@ export const getAccountsLastWeek= async () => {
 export const calculatePercentageDifference = (getAccountsThisWeek, getAccountsLastWeek) => {
     return ((getAccountsThisWeek - getAccountsLastWeek) / getAccountsLastWeek) * 100;
 }
-
