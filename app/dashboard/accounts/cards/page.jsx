@@ -4,8 +4,31 @@ import { accountCount, getAccountsLastWeek, getAccountsThisWeek } from "@/app/li
 import { calculatePercentageDifference } from "@/app/lib/data"
 import Link from 'next/link';
 
+
+async function getData() {
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmIwMzVhN2E0ZmNmZDNiMTQ3NWQ2ODIiLCJpYXQiOjE3MTU1Njc4MjR9.0z9-SU1P_7QMLpQ_KVCfTrLsgSz6ACM-2cBR4O2iJ6Y';
+    const res = await fetch('https://blastapi.mimin.io/api/v1/whatsapp-dynamic/traffic', {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    });
+
+    if (!res.ok) {
+        throw new Error('Failed to fetch data');
+    }
+
+    const response = await res.json();
+    return response.data; 
+}
+
+async function getAccountCount() {
+    const data = await getData();
+    return data.length;
+}
+
+
 const Card = async () => {
-    const totalUsers = await accountCount();
+    const totalAccount = await getAccountCount();
     const AccountThisWeek = await getAccountsThisWeek();
     const AccountLastWeek = await getAccountsLastWeek();
     const percentageDifference = calculatePercentageDifference(AccountThisWeek, AccountLastWeek);
@@ -26,8 +49,8 @@ const Card = async () => {
         <div className={styles.container}>
             <MdSupervisedUserCircle size={24} />
             <div className={styles.texts}>
-                <span className={styles.title}>Total User</span>
-                <span className={styles.number}>{totalUsers}</span> 
+                <span className={styles.title}>Total Account</span>
+                <span className={styles.number}>{totalAccount}</span> 
                 <span className={styles.detail}>
                 <span className={`${detailClass}`}>{Math.abs(percentageDifference)}%</span> {differenceText} than previous week</span>
             </div>

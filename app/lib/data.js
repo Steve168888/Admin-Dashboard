@@ -1,5 +1,7 @@
 import { User, Product, Account } from "./models";
 import { connectToDB } from "./utils";
+import { getData } from '@/app/dashboard/accounts/page';
+
 
 
 export const fetchUsers = async (q,page) => {
@@ -122,9 +124,8 @@ export const getAccountsThisWeek = async () => {
 };
 
 
-export const getAccountsLastWeek = async () => {
+export const getAccountsLastWeek= async () => {
     try {
-        // Menghubungkan ke database
         connectToDB();
 
         // Mendapatkan hari ini
@@ -147,13 +148,10 @@ export const getAccountsLastWeek = async () => {
             account_type: 'traffic',
             created_at: {
                 $gte: lastWeekMonday,
-                $lte: lastWeekSunday
+                $lt: lastWeekSunday
             }
         });
 
-        // Menampilkan tanggal yang dihitung
-
-        // Mengembalikan jumlah akun
         return accountCount;
     } catch (err) {
         console.log('Error:', err);
@@ -164,3 +162,20 @@ export const getAccountsLastWeek = async () => {
 export const calculatePercentageDifference = (getAccountsThisWeek, getAccountsLastWeek) => {
     return ((getAccountsThisWeek - getAccountsLastWeek) / getAccountsLastWeek) * 100;
 }
+
+
+
+
+export const SearchAccount = async (q, page) => {
+    const regex = new RegExp(q, "i");
+
+    try {
+        const data = await getData(q, page); // Memanggil getData untuk mendapatkan data dari API
+        const count = await Product.countDocuments({ title: { $regex: regex } });
+        return { count };
+    } catch (error) {
+        console.error("Error in SearchAccount:", error);
+        throw error;
+    }
+};
+
