@@ -1,6 +1,6 @@
-import styles from "./transactions.module.css"
+import styles from "./dashboardtransactions.module.css"
 import Image from "next/image"
-const Transactions = () => {
+const DashboardTransactions = () => {
     return(
         <div className={styles.container}>
             <h2 className={styles.title}>Latest Transactions</h2>
@@ -72,4 +72,4 @@ const Transactions = () => {
     )
 }
 
-export default Transactions
+export default DashboardTransactions

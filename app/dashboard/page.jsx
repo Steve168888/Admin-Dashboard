@@ -3,7 +3,7 @@ import Card from "../dashboard/accounts/cards/page"
 import Chart from "../ui/dashboard/chart/chart"
 import styles from "../ui/dashboard/dashboard.module.css"
 import Rightbar from "../ui/dashboard/rightbar/rightbar"
-import Transactions from "../ui/dashboard/transactions/transactions"
+import DashboardTransactions from "../ui/dashboard/dashboardtransactions/dashboardtransactions"
 const Dashboard = () => {
     return(
         <div className={styles.wrapper}>
@@ -11,7 +11,7 @@ const Dashboard = () => {
                 <div className={styles.cards}>
                     <Card/>
                 </div>
-                <Transactions/>
+                <DashboardTransactions/>
                 <Chart/>
             </div>
             <div className={styles.side}>
