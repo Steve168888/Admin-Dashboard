@@ -4,6 +4,10 @@
     border-radius: 10px;
 }
 
+.container:hover{
+    background-color: #2e374a;
+}
+
 .title{
     margin-bottom: 20px;
     font-weight: 200;
@@ -40,10 +44,10 @@
     background-color: #f7cb7375;
 }
 
-.done{
-    background-color: #afd6ee75;
+.paid{
+    background-color: #79c97975;
 }
 
-.cancelled{
+.expired{
     background-color: #f7737375;
 }

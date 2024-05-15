@@ -8,7 +8,7 @@ import { deleteAccount } from "@/app/lib/actions"
 
 export async function getData(page) {
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmIwMzVhN2E0ZmNmZDNiMTQ3NWQ2ODIiLCJpYXQiOjE3MTU1Njc4MjR9.0z9-SU1P_7QMLpQ_KVCfTrLsgSz6ACM-2cBR4O2iJ6Y';
-    const res = await fetch(`https://blastapi.mimin.io/api/v1/order/get?value=&order=_id&sort=1&page=1&limit=10&field=`, {
+    const res = await fetch(`https://blastapi.mimin.io/api/v1/order/get?value=&order=_id&sort=1&limit=10&field=&page=${page}`, {
         headers: {
             'Authorization': `Bearer ${token}`
         }
@@ -29,7 +29,6 @@ const AccountsPage = async ({ searchParams }) => {
     const { count } = await fetchAccounts(q, page);
 
     const data = await getData(page);
-    console.log(data)
 
     return (
         <div className={styles.container}>
@@ -40,7 +39,7 @@ const AccountsPage = async ({ searchParams }) => {
                 <thead>
                     <tr>
                         <td>ID</td>
-                        <td>Nama Customer</td>
+                        <td>Nama Merchant</td>
                         <td>Created At</td>
                         <td>Status</td>
                         <td>Action</td>
@@ -48,19 +47,19 @@ const AccountsPage = async ({ searchParams }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map(account => (
-                        <tr key={account._id}>
-                            <td>{account._id}</td>
-                            <td>{account.xendit.merchant_name}</td>
-                            <td>{account.created_at}</td>
-                            <td>{account.xendit.status}</td>
+                    {data.map(transaction => (
+                        <tr key={transaction._id}>
+                            <td>{transaction._id}</td>
+                            <td>{transaction.xendit.merchant_name}</td>
+                            <td>{transaction.created_at.split('T')[0]}</td>
+                            <td>{transaction.xendit.status}</td>
                             <td>
                                 <div className={styles.buttons}>
-                                    <Link href={`/dashboard/accounts/${account.id}`}>
+                                    <Link href={`/dashboard/accounts/${transaction.id}`}>
                                         <button className={`${styles.button} ${styles.view}`}>View</button>
                                     </Link>
                                     <form action={deleteAccount}>
-                                        <input type="hidden" name="id" value={account.id} />
+                                        <input type="hidden" name="id" value={transaction.id} />
                                         <button className={`${styles.button} ${styles.delete}`}>Delete</button>
                                     </form>
                                 </div>

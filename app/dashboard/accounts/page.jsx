@@ -39,7 +39,7 @@ const AccountsPage = async ({ searchParams }) => {
                 <thead>
                     <tr>
                         <td>ID</td>
-                        <td>Nama Toko</td>
+                        <td>Store Name</td>
                         <td>Type</td>
                         <td>Action</td>
                         
