@@ -26,7 +26,7 @@ const AccountsPage = async ({ searchParams }) => {
     const page = searchParams?.page || 1;
 
     // Fetch accounts data based on the current page
-    const { count } = await fetchAccounts(q, page);
+    const { count } = await fetchAccounts(q);
 
     const data = await getData(page);
 
@@ -55,7 +55,7 @@ const AccountsPage = async ({ searchParams }) => {
                             <td>{transaction.xendit.status}</td>
                             <td>
                                 <div className={styles.buttons}>
-                                    <Link href={`/dashboard/accounts/${transaction.id}`}>
+                                    <Link href={`/dashboard/transactions/${transaction.id}`}>
                                         <button className={`${styles.button} ${styles.view}`}>View</button>
                                     </Link>
                                     <form action={deleteAccount}>

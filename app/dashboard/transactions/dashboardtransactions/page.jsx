@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export async function getData(page) {
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmIwMzVhN2E0ZmNmZDNiMTQ3NWQ2ODIiLCJpYXQiOjE3MTU1Njc4MjR9.0z9-SU1P_7QMLpQ_KVCfTrLsgSz6ACM-2cBR4O2iJ6Y';
-    const res = await fetch(`https://blastapi.mimin.io/api/v1/order/get?value=&order=_id&sort=1&limit=10&field=&page=${page}`, {
+    const res = await fetch(`https://blastapi.mimin.io/api/v1/order/get?value=&order=_id&sort=1&field=&page=${page}`, {
         headers: {
             'Authorization': `Bearer ${token}`
         }
@@ -25,7 +25,6 @@ const DashboardTransactions = async () => {
     data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
     const latestTransactions = data.slice(0, 6);
-
 
     return(
         <Link href={"/dashboard/transactions"}>

@@ -41,8 +41,7 @@ const AccountsPage = async ({ searchParams }) => {
                         <td>ID</td>
                         <td>Store Name</td>
                         <td>Type</td>
-                        <td>Action</td>
-                        
+                        <td>Action</td> 
                     </tr>
                 </thead>
                 <tbody>
@@ -53,11 +52,11 @@ const AccountsPage = async ({ searchParams }) => {
                             <td>{account.type}</td>
                             <td>
                                 <div className={styles.buttons}>
-                                    <Link href={`/dashboard/accounts/${account.id}`}>
+                                    <Link href={`/dashboard/accounts/${account._id}`}>
                                         <button className={`${styles.button} ${styles.view}`}>View</button>
                                     </Link>
                                     <form action={deleteAccount}>
-                                        <input type="hidden" name="id" value={account.id} />
+                                        <input type="hidden" name="id" value={account._id} />
                                         <button className={`${styles.button} ${styles.delete}`}>Delete</button>
                                     </form>
                                 </div>

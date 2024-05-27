@@ -1,6 +1,6 @@
 
 import Card from "../dashboard/accounts/cards/page"
-import Chart from "../ui/dashboard/chart/chart"
+import Chart from "../dashboard/transactions/chart/page"
 import styles from "../ui/dashboard/dashboard.module.css"
 import Rightbar from "../ui/dashboard/rightbar/rightbar"
 import DashboardTransactions from "../dashboard/transactions/dashboardtransactions/page"

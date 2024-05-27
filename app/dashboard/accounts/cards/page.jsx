@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 async function getData() {
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmIwMzVhN2E0ZmNmZDNiMTQ3NWQ2ODIiLCJpYXQiOjE3MTU1Njc4MjR9.0z9-SU1P_7QMLpQ_KVCfTrLsgSz6ACM-2cBR4O2iJ6Y';
-    const res = await fetch('https://blastapi.mimin.io/api/v1/whatsapp-dynamic/traffic', {
+    const res = await fetch('https://blastapi.mimin.io/api/v1/whatsapp-dynamic/traffic?page=${page}', {
         headers: {
             'Authorization': `Bearer ${token}`
         }
