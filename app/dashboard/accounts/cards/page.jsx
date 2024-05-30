@@ -1,6 +1,6 @@
 import { MdSupervisedUserCircle } from "react-icons/md"
 import styles from '@/app/ui/dashboard/card/card.module.css'
-import { accountCount, getAccountsLastWeek, getAccountsThisWeek } from "@/app/lib/data"
+import { getAccountsLastWeek, getAccountsThisWeek } from "@/app/lib/data"
 import { calculatePercentageDifference } from "@/app/lib/data"
 import Link from 'next/link';
 

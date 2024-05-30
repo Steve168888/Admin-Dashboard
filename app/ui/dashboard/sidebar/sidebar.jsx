@@ -50,8 +50,8 @@ const menuItems = [
     title: "Analytics",
     list: [
       {
-        title: "Revenue",
-        path: "/dashboard/revenue",
+        title: "Summary",
+        path: "/dashboard/summary",
         icon: <MdWork />,
       },
       {

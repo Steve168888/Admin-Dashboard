@@ -51,3 +51,8 @@ const SingleAccountPage = async ({ params }) => {
 
 
 export default SingleAccountPage
+
+
+
+
+
