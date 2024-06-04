@@ -34,16 +34,6 @@ const menuItems = [
         path: "/dashboard/transactions",
         icon: <MdAttachMoney />,
       },
-      {
-        title: "Users",
-        path: "/dashboard/users",
-        icon: <MdSupervisedUserCircle />,
-      },
-      {
-        title: "Products",
-        path: "/dashboard/products",
-        icon: <MdShoppingBag />,
-      },
     ],
   },
   {
@@ -54,31 +44,12 @@ const menuItems = [
         path: "/dashboard/summary",
         icon: <MdWork />,
       },
-      {
-        title: "Reports",
-        path: "/dashboard/reports",
-        icon: <MdAnalytics />,
-      },
-      {
-        title: "Teams",
-        path: "/dashboard/teams",
-        icon: <MdPeople />,
-      },
     ],
   },
   {
     title: "User",
     list: [
-      {
-        title: "Settings",
-        path: "/dashboard/settings",
-        icon: <MdOutlineSettings />,
-      },
-      {
-        title: "Help",
-        path: "/dashboard/help",
-        icon: <MdHelpCenter />,
-      },
+    
     ],
   },
 ];
