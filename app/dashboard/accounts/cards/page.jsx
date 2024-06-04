@@ -53,8 +53,7 @@ const Card = async () => {
                 <span className={`${detailClass}`}>{Math.abs(percentageDifference)}%</span> {differenceText} than previous week</span>
             </div>
         </div>
-    </Link>
-        
+    </Link>    
     )
 }
 
