@@ -17,18 +17,17 @@ export async function getData(page) {
         throw new Error('Failed to fetch data');
     }
     const response = await res.json();
-    return response.data; 
+    return response;
 }
-
 
 const AccountsPage = async ({ searchParams }) => {
     const q = searchParams?.q || "";
     const page = searchParams?.page || 1;
 
-    // Fetch accounts data based on the current page
-    const { count } = await fetchAccounts(q, page);
-
-    const data = await getData(page);
+  
+    const response = await getData(page);
+    const data = response.data;
+    const size = response.size;
 
     return (
         <div className={styles.container}>
@@ -65,7 +64,7 @@ const AccountsPage = async ({ searchParams }) => {
                     ))}
                 </tbody>
             </table>
-            <Pagination count={count} />
+            <Pagination count={size} />
         </div>
     )
 }

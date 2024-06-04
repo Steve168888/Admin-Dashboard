@@ -16,19 +16,17 @@ async function getData() {
     if (!res.ok) {
         throw new Error('Failed to fetch data');
     }
-
     const response = await res.json();
-    return response.data; 
+    return response; 
 }
 
-async function getAccountCount() {
-    const data = await getData();
-    return data.length;
-}
+
 
 
 const Card = async () => {
-    const totalAccount = await getAccountCount();
+    const response = await getData();
+    const totalAccount = response.size;
+    
     const AccountThisWeek = await getAccountsThisWeek();
     const AccountLastWeek = await getAccountsLastWeek();
     const percentageDifference = calculatePercentageDifference(AccountThisWeek, AccountLastWeek);

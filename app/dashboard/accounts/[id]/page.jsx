@@ -22,37 +22,28 @@ export async function getDataById(id) {
 const SingleAccountPage = async ({ params }) => {
     const { id } = params;
     const data = await getDataById(id); 
-
     
     return (
         <div className={styles.container}>
             <div className={styles.infoContainer}>
-                <div>caih@min.io</div>
+                <div>{data.nama_toko}</div>
             </div>
             <div className={styles.formContainer}>
-                {data.map(account=>( 
-                    <tr key={account._id}>
-                        <label className={styles.labeltext}>ID</label>
-                        <div>{account._id}</div>
-                        <label className={styles.labeltext}>Store Name</label>
-                        <div>{account.nama_toko}</div>
-                        <label className={styles.labeltext}>API Key</label>
-                        <div>{account.api_key}</div>
-                        <label className={styles.labeltext}>is activated</label>
-                        <div>{account.is_activated}</div>
-                        <label className={styles.labeltext}>Type</label>
-                        <div>{account.type}</div>
-                    </tr>
-                     ))}
+                <div>
+                    <label className={styles.labeltext}>ID</label>
+                    <div>{data._id}</div>
+                    <label className={styles.labeltext}>Store Name</label>
+                    <div>{data.nama_toko}</div>
+                    <label className={styles.labeltext}>API Key</label>
+                    <div>{data.api_key}</div>
+                    <label className={styles.labeltext}>is activated</label>
+                    <div>{data.is_activated}</div>
+                    <label className={styles.labeltext}>Type</label>
+                    <div>{data.type}</div>
+                </div>
             </div>
         </div>
     )
 }
 
-
-export default SingleAccountPage
-
-
-
-
-
+export default SingleAccountPage;
