@@ -6,9 +6,9 @@ import Pagination from "@/app/ui/dashboard/pagination/pagination"
 import { fetchAccounts } from "@/app/lib/data"
 import { deleteAccount } from "@/app/lib/actions"
 
-export async function getData(page) {
+export async function getData(q, page) {
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmIwMzVhN2E0ZmNmZDNiMTQ3NWQ2ODIiLCJpYXQiOjE3MTU1Njc4MjR9.0z9-SU1P_7QMLpQ_KVCfTrLsgSz6ACM-2cBR4O2iJ6Y';
-    const res = await fetch(`https://blastapi.mimin.io/api/v1/whatsapp-dynamic/traffic?limit=10&page=${page}`, {
+    const res = await fetch(`https://blastapi.mimin.io/api/v1/whatsapp-dynamic/traffic?limit=10&page=${page}&q=${q}`, {
         headers: {
             'Authorization': `Bearer ${token}`
         }
@@ -24,10 +24,8 @@ const AccountsPage = async ({ searchParams }) => {
     const q = searchParams?.q || "";
     const page = searchParams?.page || 1;
 
-  
-    const response = await getData(page);
-    const data = response.data;
-    const size = response.size;
+    const {size, data} = await getData(q, page); 
+
 
     return (
         <div className={styles.container}>
@@ -54,10 +52,6 @@ const AccountsPage = async ({ searchParams }) => {
                                     <Link href={`/dashboard/accounts/${account._id}`}>
                                         <button className={`${styles.button} ${styles.view}`}>View</button>
                                     </Link>
-                                    <form action={deleteAccount}>
-                                        <input type="hidden" name="id" value={account._id} />
-                                        <button className={`${styles.button} ${styles.delete}`}>Delete</button>
-                                    </form>
                                 </div>
                             </td>
                         </tr>

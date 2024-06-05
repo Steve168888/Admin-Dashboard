@@ -30,7 +30,7 @@ const menuItems = [
         icon: <MdSupervisedUserCircle />,
       },
       {
-        title: "Transactions",
+        title: "Transaction",
         path: "/dashboard/transactions",
         icon: <MdAttachMoney />,
       },

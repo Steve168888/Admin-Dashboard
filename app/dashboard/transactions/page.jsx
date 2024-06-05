@@ -6,7 +6,7 @@ import Pagination from "@/app/ui/dashboard/pagination/pagination"
 import { fetchAccounts } from "@/app/lib/data"
 import { deleteAccount } from "@/app/lib/actions"
 
-export async function getData(page) {
+export async function getData(q, page) {
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmIwMzVhN2E0ZmNmZDNiMTQ3NWQ2ODIiLCJpYXQiOjE3MTU1Njc4MjR9.0z9-SU1P_7QMLpQ_KVCfTrLsgSz6ACM-2cBR4O2iJ6Y';
     const res = await fetch(`https://blastapi.mimin.io/api/v1/order/get?value=&order=_id&sort=1&limit=10&field=&page=${page}`, {
         headers: {
@@ -26,7 +26,7 @@ const AccountsPage = async ({ searchParams }) => {
     const page = searchParams?.page || 1;
 
    
-    const response = await getData(page);
+    const response = await getData(q, page);
     const data = response.data;
     const size = response.size
 
@@ -58,10 +58,6 @@ const AccountsPage = async ({ searchParams }) => {
                                     <Link href={`/dashboard/transactions/${transaction.id}`}>
                                         <button className={`${styles.button} ${styles.view}`}>View</button>
                                     </Link>
-                                    <form action={deleteAccount}>
-                                        <input type="hidden" name="id" value={transaction.id} />
-                                        <button className={`${styles.button} ${styles.delete}`}>Delete</button>
-                                    </form>
                                 </div>
                             </td>
                         </tr>
