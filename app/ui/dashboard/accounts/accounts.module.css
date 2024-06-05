@@ -52,6 +52,10 @@
     cursor: pointer;
 }
 
+.button:hover{
+    transform: scale(1.1);
+}
+
 .view{
     background-color: teal;
 }
@@ -59,3 +63,4 @@
 .delete{
     background-color: crimson;
 }
+

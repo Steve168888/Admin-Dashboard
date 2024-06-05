@@ -27,6 +27,7 @@ const Card = async () => {
     const response = await getData();
     const totalAccount = response.size;
     
+    
     const AccountThisWeek = await getAccountsThisWeek();
     const AccountLastWeek = await getAccountsLastWeek();
     const percentageDifference = calculatePercentageDifference(AccountThisWeek, AccountLastWeek);

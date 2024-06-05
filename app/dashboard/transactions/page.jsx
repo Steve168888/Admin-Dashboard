@@ -26,9 +26,8 @@ const AccountsPage = async ({ searchParams }) => {
     const page = searchParams?.page || 1;
 
    
-    const response = await getData(q, page);
-    const data = response.data;
-    const size = response.size
+    const {size, data} = await getData(q, page);
+
 
     return (
         <div className={styles.container}>
