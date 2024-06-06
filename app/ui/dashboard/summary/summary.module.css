@@ -1,15 +1,29 @@
-.container{
+.containerWrapper {
+    display: flex;
+}
+
+.container1 {
     background-color: var(--bgSoft);
     padding: 20px;
     border-radius: 10px;
     margin-top: 20px;
+    display: inline-block; 
 }
 
-.chartWrapper{
-    display: flex; 
+.container2 {
+    background-color: var(--bgSoft);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: inline-block; 
+}
+
+.chartWrapper {
+    display: flex;
+    margin-top: 20px; 
 }
 
 .chartBox {
     flex: 1;
-    margin-right: 20px; /* Atur jarak antara chartBox */
+    margin-right: 20px; 
 }

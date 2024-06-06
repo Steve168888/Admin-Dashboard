@@ -10,23 +10,32 @@ import Chart2 from "./chart2/page"
 
 
 const SummaryPage = () => {
-   
-    return(
-        <div className={styles.container}>
-            <div className={styles.chartWrapper}>
-                <div className={styles.chartBox}>
-                    <Chart1 />
+    return (
+        <div className={styles.containerWrapper}>
+            <div className={styles.container1}>
+                <div>
+                    <div>Grafik 1</div>
                 </div>
-                
-                <div className={styles.chartBox}>
-                    <Chart2 />
+                <div className={styles.chartWrapper}>
+                    <div className={styles.chartBox}>
+                        <Chart1 />
+                    </div>
+                </div>
+            </div>
+        
+            <div className={styles.container2}>
+                <div>
+                    <div>Grafik 2</div>
+                </div>
+                <div className={styles.chartWrapper}>
+                    <div className={styles.chartBox}>
+                        <Chart2 />
+                    </div>
                 </div>
             </div>
         </div>
-
-
-
-    )
+    );
 }
+
 
 export default SummaryPage

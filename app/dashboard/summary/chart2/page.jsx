@@ -21,7 +21,7 @@ const Chart2 = () => {
                     datasets: [
                         {
                             label: "Info",
-                            data: [34,64,23, 45, 88],
+                            data: [29,64,23, 45, 88],
                             backgroundColor: [
                                 "rgb(255, 99, 132, 0.4)",
                                 "rgb(255, 159, 64, 0.4)",
